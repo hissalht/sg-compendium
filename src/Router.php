@@ -11,8 +11,27 @@ class Router {
         $comboStorage->reinit();
         $controller = new Controller($view, $comboStorage);
 
-        $controller->showCombo(2);
+        if(key_exists("combo", $_GET)){
+            $controller->showCombo($_GET["combo"]);
+        }else if(key_exists("list", $_GET)){
+            $controller->showComboList();
+        }else if(key_exists("about", $_GET)){
+            $controller->showAbout();
+        }
+
         $view->render();
+    }
+
+    public function getComboURL($id){
+        return "index.php?combo=".$id;
+    }
+
+    public function getComboListURL(){
+        return "index.php?list";
+    }
+
+    public function getAboutPageURL(){
+        return "index.php?about";
     }
 }
 ?>

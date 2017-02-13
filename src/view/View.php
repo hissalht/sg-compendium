@@ -20,6 +20,16 @@ class View {
         $this->content = "<p>Contenu de la page</p>";
     }
 
+    public function makeHomePage(){
+        //TODO
+        $this->makeTestPage();
+    }
+
+    public function makeAboutPage(){
+        $this->title = "About";
+        $this->content = "<p>I am 21400748.</p>";
+    }
+
     public function makeComboPage($combo){
         $this->title = "Combo page";
         $character = $combo->getCharacter();
@@ -28,6 +38,14 @@ class View {
 
         ob_start();
         include("layout/combo_page.php");
+        $this->content = ob_get_clean();
+    }
+
+
+    public function makeComboListPage($combos){
+        $this->title = "Combo list";
+        ob_start();
+        include("layout/combo_list.php");
         $this->content = ob_get_clean();
     }
 }

@@ -12,5 +12,17 @@ class Controller{
         $combo = $this->comboStorage->getCombo($id);
         $this->view->makeComboPage($combo);
     }
+
+    public function showAbout(){
+        $this->view->makeAboutPage();
+    }
+
+    public function showHome(){
+        $this->view->makeHomePage();
+    }
+
+    public function showComboList(){
+        $this->view->makeComboListPage($this->comboStorage->getAllCombos());
+    }
 }
 ?>
