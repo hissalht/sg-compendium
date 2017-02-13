@@ -53,7 +53,9 @@ class ComboStorageFile implements ComboStorage {
                     "j.HP",
                     "H Cymbal Clash",
                     "H Take the A-Train",
-                )
+                ),
+                "John Jhon",
+                "very easy"
             ),
             2 => new Combo(
                 "Beowulf",
@@ -67,7 +69,10 @@ class ComboStorageFile implements ComboStorage {
                     "2LK",
                     "c.MP",
                     "PP",
-                )
+                ),
+                "xXx_WereWolfDarkShadowKiller_xXx",
+                "very hard",
+                4200
             ),
         );
         $this->nextId = 3;

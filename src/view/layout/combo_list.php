@@ -4,7 +4,7 @@
 <table>
 <?php
 foreach($combos as $id =>  $combo){
-    echo "<tr>";
+    echo "<tr onclick=\"window.document.location='".$this->router->getComboURL($id)."';\">";
     echo "<td>".$id."</td>";
     echo "<td>".$combo->getCharacter()."</td>";
     echo "<td>".$combo->getDescription()."</td>";

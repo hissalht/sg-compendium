@@ -11,6 +11,10 @@ class Router {
         $comboStorage->reinit();
         $controller = new Controller($view, $comboStorage);
 
+        if(key_exists("reset", $_GET)){
+            $comboStorage->reinit();
+        }
+
         if(key_exists("combo", $_GET)){
             $controller->showCombo($_GET["combo"]);
         }else if(key_exists("list", $_GET)){

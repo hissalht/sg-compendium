@@ -3,6 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <title><?php echo $title; ?></title>
+        <link rel="stylesheet" type="text/css" href="src/view/layout/style.css">
     </head>
     <body>
         <h1>Combo compendium</h1>
