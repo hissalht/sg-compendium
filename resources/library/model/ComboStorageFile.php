@@ -47,13 +47,15 @@ class ComboStorageFile implements ComboStorage {
                 "Big Band",
                 "Babby Combo for new Big Band players (works midscreen, works in the corner, not hard, does no damage)",
                 array(
-                    "c.LK",
-                    "c.MK",
-                    "s.HP",
-                    "j.MP",
-                    "j.HP",
-                    "QCB.HK Cymbal Clash",
-                    "charge f.HP Take the A-Train",
+                    array(
+                        "c.LK",
+                        "c.MK",
+                        "s.HP",
+                        "j.MP",
+                        "j.HP",
+                        "QCB.HK Cymbal Clash",
+                        "charge f.HP Take the A-Train",
+                    ),
                 ),
                 "John Jhon",
                 "very easy"
@@ -63,21 +65,41 @@ class ComboStorageFile implements ComboStorage {
                 "Beowulf",
                 "Easy chair combo for Beowulf",
                 array(
-                    "c.LK",
-                    "s.MP",
-                    "c.HK",
-                    "QCF.LK",
-                    "8LK",
-                    "2LK",
-                    "c.MP (grab OTG)",
-                    "PP Blyat Dance",
+                    array(
+                        "c.LK",
+                        "s.MP",
+                        "c.HK",
+                        "QCF.LK",
+                        "8LK",
+                        "2LK",
+                        "c.MP (grab OTG)",
+                        "PP Blyat Dance",
+                    ),
                 ),
                 "xXx_WereWolfDarkShadowKiller_xXx",
                 "very hard",
                 4200
             ),
+            3 => new Combo(
+                "BB BnB mid-screen",
+                "Big Band",
+                "Intermediate mid-screen bread'n'butter combo for Big Band.<br> * The j.HP is supposed to whiff. This causes Big Band to fastfall which lets you link a light normal after. If this is too hard, any combo that includes this can be done with j.MK instead of j.MKx2 for a little less damage.",
+                array(
+                    array("c.LK", "c.MK", "s.HP"),
+                    array("j.MP", "j.HP", "delay j.HK"),
+                    array("tech forward"),
+                    array("OTG c.HK", "xx H Beat Extend"),
+                    array("j.LK", "j.MK"),
+                    array("s.MK"),
+                    array("j.LP", "j.LK", "j.MKx2", "j.HP*"),
+                    array("c.LPx2", "c.MK", "s.HK", "xx H Take the A-Train", "xx Super Sonic Jazz"),
+                ),
+                "Internet Dude",
+                "Intermediate",
+                8300
+            )
         );
-        $this->nextId = 3;
+        $this->nextId = 4;
     }
 }
 ?>
