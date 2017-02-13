@@ -38,5 +38,9 @@ class Router {
     public function getAboutPageURL(){
         return "index.php?about";
     }
+
+    public function getHomeURL(){
+        return "index.php";
+    }
 }
 ?>

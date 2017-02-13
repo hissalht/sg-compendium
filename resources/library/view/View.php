@@ -4,14 +4,20 @@ class View {
     private $content;
     private $pageType;
     private $router;
+    private $menu;
 
     public function __construct($router){
         $this->router = $router;
+        $this->menu = array(
+            "Home" => $this->router->getHomeURL(),
+            "List" => $this->router->getComboListURL(),
+            "About" => $this->router->getAboutPageURL(),
+        );
     }
 
     public function render(){
-        $title = $this->title;
-        $content = $this->content;
+        //$title = $this->title;
+        //$content = $this->content;
         include(TEMPLATES_PATH . "squelette.php");
     }
 
