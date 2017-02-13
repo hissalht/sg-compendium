@@ -7,7 +7,7 @@ class Router {
     public function main(){
         session_start();
         $view = new View($this);
-        $comboStorage = new ComboStorageFile("tempo/combo.db");
+        $comboStorage = new ComboStorageFile(TMP_DIR . "combo.db");
         $comboStorage->reinit();
         $controller = new Controller($view, $comboStorage);
 

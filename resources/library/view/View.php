@@ -12,7 +12,7 @@ class View {
     public function render(){
         $title = $this->title;
         $content = $this->content;
-        include("layout/squelette.php");
+        include(TEMPLATES_PATH . "squelette.php");
     }
 
     public function makeTestPage(){
@@ -37,7 +37,7 @@ class View {
         $moveList = $combo->getMoves();
 
         ob_start();
-        include("layout/combo_page.php");
+        include(TEMPLATES_PATH . "combo_page.php");
         $this->content = ob_get_clean();
     }
 
@@ -45,7 +45,7 @@ class View {
     public function makeComboListPage($combos){
         $this->title = "Combo list";
         ob_start();
-        include("layout/combo_list.php");
+        include(TEMPLATES_PATH . "combo_list.php");
         $this->content = ob_get_clean();
     }
 }
