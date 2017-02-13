@@ -2,7 +2,7 @@
 class View {
     private $title;
     private $content;
-
+    private $pageType;
     private $router;
 
     public function __construct($router){
@@ -22,13 +22,21 @@ class View {
 
     public function makeComboPage($combo){
         $this->title = $combo["name"];
-        $this->content = "<p>".$combo["character"]." combo :</p>\n";
-        $this->content .= "<p>".$combo["description"]."</p>\n";
-        $this->content .= "<p>";
-        foreach($combo["moves"] as $move){
-            $this->content .= $move.", ";
-        }
-        $this->content .= "</p>";
+        $character = $combo["character"];
+        $description = $combo["description"];
+        $moveList = $combo["moves"];
+
+        ob_start();
+        include("layout/combo_page.php");
+        $this->content = ob_get_clean();
+
+        //$this->content = getScriptOutput("layout/combo_page.php");
+        //$this->content = "<p>".$combo["character"]." combo :</p>\n";
+        //$this->content .= "<p>".$combo["description"]."</p>\n";
+        //$this->content .= "<p>";
+        //foreach($combo["moves"] as $move){
+            //$this->content .= $move.", ";
+        //}
+        //$this->content .= "</p>";
     }
 }
-?>
