@@ -12,7 +12,7 @@ class View {
     public function render(){
         $title = $this->title;
         $content = $this->content;
-        include("squelette.php");
+        include("layout/squelette.php");
     }
 
     public function makeTestPage(){
