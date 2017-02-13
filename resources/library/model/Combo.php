@@ -1,5 +1,6 @@
 <?php
 class Combo {
+    private $name;
     private $character;
     private $description;
     private $moves;
@@ -7,7 +8,8 @@ class Combo {
     private $author;
     private $difficulty;
 
-    public function __construct($character, $description, $moves, $author, $difficulty="N/A", $damage="N/A"){
+    public function __construct($name, $character, $description, $moves, $author, $difficulty="N/A", $damage="N/A"){
+        $this->name = $name;
         $this->character = $character;
         $this->description = $description;
         $this->moves = $moves;
@@ -28,7 +30,7 @@ class Combo {
         return $this->moves;
     }
 
-    public function getDamage(){
+    public function getDamages(){
         return $this->damage;
     }
 
@@ -38,6 +40,10 @@ class Combo {
 
     public function getDifficulty(){
         return $this->difficulty;
+    }
+
+    public function getName(){
+        return $this->name;
     }
 }
 ?>

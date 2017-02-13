@@ -43,6 +43,7 @@ class ComboStorageFile implements ComboStorage {
     public function reinit(){
         $this->arr = array(
             1 => new Combo(
+                "BB baby combo",
                 "Big Band",
                 "Babby Combo for new Big Band players (works midscreen, works in the corner, not hard, does no damage)",
                 array(
@@ -58,6 +59,7 @@ class ComboStorageFile implements ComboStorage {
                 "very easy"
             ),
             2 => new Combo(
+                "FURY OF THE WOLF",
                 "Beowulf",
                 "Easy chair combo for Beowulf",
                 array(

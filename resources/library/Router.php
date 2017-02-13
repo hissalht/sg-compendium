@@ -8,7 +8,6 @@ class Router {
         session_start();
         $view = new View($this);
         $comboStorage = new ComboStorageFile(TMP_DIR . "combo.db");
-        $comboStorage->reinit();
         $controller = new Controller($view, $comboStorage);
 
         if(key_exists("reset", $_GET)){
@@ -21,6 +20,8 @@ class Router {
             $controller->showComboList();
         }else if(key_exists("about", $_GET)){
             $controller->showAbout();
+        }else{
+            $controller->showHome();
         }
 
         $view->render();
