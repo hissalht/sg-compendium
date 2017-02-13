@@ -3,7 +3,7 @@
 <ul id="combo">
 <?php
 foreach($moveList as $move){
-    echo "<li>".$move."</li>\n";
+    echo "<li>".View::convertMove($move)."</li>\n";
 }
 ?>
 </ul>

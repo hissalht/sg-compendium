@@ -48,4 +48,29 @@ class View {
         include(TEMPLATES_PATH . "combo_list.php");
         $this->content = ob_get_clean();
     }
+
+    //retourne la version "jolie" d'un move : un bouton LK à la place du texte dur LK
+    public static function convertMove($move){
+        $move = str_replace("LK", "<img src=\"img/layout/LK.png\" alt=\"LK\">", $move);
+        $move = str_replace("MK", "<img src=\"img/layout/MK.png\" alt=\"MK\">", $move);
+        $move = str_replace("HK", "<img src=\"img/layout/HK.png\" alt=\"HK\">", $move);
+        $move = str_replace("LP", "<img src=\"img/layout/LP.png\" alt=\"LP\">", $move);
+        $move = str_replace("MP", "<img src=\"img/layout/MP.png\" alt=\"MP\">", $move);
+        $move = str_replace("HP", "<img src=\"img/layout/HP.png\" alt=\"HP\">", $move);
+        $move = str_replace("DP", "<img src=\"img/layout/DP.png\" alt=\"DP\">", $move);
+        $move = str_replace("RDP", "<img src=\"img/layout/RDP.png\" alt=\"RDP\">", $move);
+        $move = str_replace("QCF", "<img src=\"img/layout/QCF.png\" alt=\"QCF\">", $move);
+        $move = str_replace("QCB", "<img src=\"img/layout/QCB.png\" alt=\"QCB\">", $move);
+        $move = str_replace("PP", "<img src=\"img/layout/PP.png\" alt=\"PP\">", $move);
+        $move = str_replace("KK", "<img src=\"img/layout/KK.png\" alt=\"KK\">", $move);
+        $move = str_replace("2", "<img src=\"img/layout/2.png\" alt=\"2\">", $move);
+        $move = str_replace("1", "<img src=\"img/layout/1.png\" alt=\"1\">", $move);
+        $move = str_replace("3", "<img src=\"img/layout/3.png\" alt=\"3\">", $move);
+        $move = str_replace("4", "<img src=\"img/layout/4.png\" alt=\"4\">", $move);
+        $move = str_replace("9", "<img src=\"img/layout/9.png\" alt=\"9\">", $move);
+        $move = str_replace("6", "<img src=\"img/layout/6.png\" alt=\"6\">", $move);
+        $move = str_replace("7", "<img src=\"img/layout/7.png\" alt=\"7\">", $move);
+        $move = str_replace("8", "<img src=\"img/layout/8.png\" alt=\"8\">", $move);
+        return $move;
+    }
 }
