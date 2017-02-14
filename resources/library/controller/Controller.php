@@ -30,7 +30,7 @@ class Controller{
     public function connect(){
         $user = $this->userdb->checkAuth($_POST["login"], $_POST["password"]);
         if($user){
-            $_SESSION["user"] = "adrien";
+            $_SESSION["user"] = $user;
             //$_SESSION["feedback"] = "You successfuly connected. Welcome {$user->name} !";
         }else{
             //$_SESSION["feedback"] = "Connection failed";

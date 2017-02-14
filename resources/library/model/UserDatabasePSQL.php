@@ -1,5 +1,6 @@
 <?php
 require_once("UserDatabase.php");
+require_once("User.php");
 class UserDatabasePSQL implements UserDatabase {
     private $db;
     private $loginStatement;
@@ -26,8 +27,8 @@ class UserDatabasePSQL implements UserDatabase {
         $result = $this->loginStatement->fetchAll(PDO::FETCH_ASSOC);
 
         foreach($result as $line){
-            if(password_verify($password, $result["hash"])){
-                return new User($result["id"], $result["login"], $result["name"], $result["status"], $result["mail"]);
+            if(password_verify($password, $line["hash"])){
+                return new UserAccount($line["id"], $line["login"], $line["name"], $line["status"], $line["mail"]);
             }
         }
         return false;
