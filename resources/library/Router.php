@@ -20,6 +20,11 @@ class Router {
             $controller->connect();
         }
 
+        if(key_exists("disconnect", $_POST)){
+            $controller->disconnect();
+        }
+
+
         if(key_exists("combo", $_GET)){
             $controller->showCombo($_GET["combo"]);
         }else if(key_exists("list", $_GET)){
@@ -50,7 +55,11 @@ class Router {
     }
 
     public function getConnectionURL(){
-        return "index.php?connection";
+        return "index.php";
+    }
+
+    public function getDisconnectionURL(){
+        return "index.php";
     }
 }
 ?>

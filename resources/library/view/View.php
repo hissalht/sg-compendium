@@ -23,6 +23,7 @@ class View {
             //user is connected
             $user = $_SESSION["user"];
             $userSpace = "<p>{$user} You are connected.</p>";
+            $userSpace .= "<form method=\"POST\" action=\"".$this->router->getDisconnectionURL()."\"><input type=\"submit\" name=\"disconnect\" value=\"Disconnect\"></form>";
 
         }else{
         ob_start();
