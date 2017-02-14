@@ -6,6 +6,9 @@
         <link rel="stylesheet" type="text/css" href="css/style.css">
     </head>
     <body>
+        <div id="user-space">
+            <?php echo $userSpace; ?>
+        </div>
         <h1>Combo compendium</h1>
         <nav class="menu">
             <ul>

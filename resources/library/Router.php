@@ -14,6 +14,10 @@ class Router {
             $comboStorage->reinit();
         }
 
+        if(key_exists("login", $_POST) && key_exists("password", $_POST)){
+            $controller->connect();
+        }
+
         if(key_exists("combo", $_GET)){
             $controller->showCombo($_GET["combo"]);
         }else if(key_exists("list", $_GET)){
@@ -41,6 +45,10 @@ class Router {
 
     public function getHomeURL(){
         return "index.php";
+    }
+
+    public function getConnectionURL(){
+        return "index.php?connection";
     }
 }
 ?>

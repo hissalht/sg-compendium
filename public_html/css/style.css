@@ -11,3 +11,9 @@ table, th, tr, td {
 .beowulf {
     background-color: grey;
 }
+
+#user-space {
+    background-color: #DDDDDD;
+    border: 1px solid black;
+    padding: 5px;
+}

@@ -24,5 +24,13 @@ class Controller{
     public function showComboList(){
         $this->view->makeComboListPage($this->comboStorage->getAllCombos());
     }
+
+    public function connect(){
+        //$user = $this->userdb->checkAuth($_POST["login"], $_POST["password"]);
+        //if($user){
+            $_SESSION["user"] = "adrien";
+            //$_SESSION["feedback"] = "You successfuly connected. Welcome {$user->name} !";
+        //}
+    }
 }
 ?>

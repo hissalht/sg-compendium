@@ -18,6 +18,17 @@ class View {
     public function render(){
         //$title = $this->title;
         //$content = $this->content;
+        //$userSpace = "<p>Ici bientôt, un formulaire de connexion</p>";
+        if(key_exists("user", $_SESSION)){
+            //user is connected
+            $user = $_SESSION["user"];
+            $userSpace = "<p>{$user} You are connected.</p>";
+
+        }else{
+        ob_start();
+            include(TEMPLATES_PATH . "connection_form.php");
+            $userSpace = ob_get_clean();
+        }
         include(TEMPLATES_PATH . "squelette.php");
     }
 
