@@ -46,5 +46,9 @@ class Controller{
     public function userConnected(){
         return key_exists("user", $_SESSION);
     }
+
+    public function showNewCombo(){
+        $this->view->makeNewComboPage();
+    }
 }
 ?>

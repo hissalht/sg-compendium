@@ -1,5 +1,23 @@
 <?php
 class Combo {
+
+    public const CHARACTERS = array(
+        "Big Band",
+        "Beowulf",
+        "Filia",
+        "Valentine",
+        "Peacock",
+        "Squigly",
+        "Eliza",
+        "Ms. Fortune",
+        "Cerebella",
+        "Parasoul",
+        "Double",
+        "Fukua",
+        "Painwheel",
+        "Robo-Fortune",
+    );
+
     private $name;
     private $character;
     private $description;

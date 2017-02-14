@@ -67,6 +67,13 @@ class View {
         $this->content = ob_get_clean();
     }
 
+    public function makeNewComboPage(){
+        $this->title = "New combo";
+        ob_start();
+        include(TEMPLATES_PATH . "new_combo_form.php");
+        $this->content = ob_get_clean();
+    }
+
     //retourne la version "jolie" d'un move : un bouton LK à la place du texte dur LK
     public static function convertMove($move){
         $move = str_replace("LK", "<img src=\"img/layout/LK.png\" alt=\"LK\">", $move);
@@ -91,4 +98,5 @@ class View {
         //$move = str_replace("8", "<img src=\"img/layout/8.png\" alt=\"8\">", $move);
         return $move;
     }
+
 }

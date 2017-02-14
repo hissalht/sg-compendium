@@ -13,6 +13,7 @@ CREATE TABLE Combos (
     name    VARCHAR(100),
     description VARCHAR(2000),
     author  INTEGER,
+    charac  INTEGER,
     moves   TEXT[]
 );
 
@@ -31,6 +32,7 @@ INSERT INTO Combos VALUES (
     1,
     'BB Intermediate BNB',
     'Intermediate mid-screen bread''n''butter combo for Big Band.<br> * The j.HP is supposed to whiff. This causes Big Band to fastfall which lets you link a light normal after. If this is too hard, any combo that includes this can be done with j.MK instead of j.MKx2 for a little less damage.',
+    1,
     1,
     '{
         "c.LK", "c.MK", "s.HP", "NS",

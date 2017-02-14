@@ -31,6 +31,8 @@ class Router {
             $controller->showComboList();
         }else if(key_exists("about", $_GET)){
             $controller->showAbout();
+        }else if(key_exists("new", $_GET)){
+            $controller->showNewCombo();
         }else{
             $controller->showHome();
         }
@@ -59,6 +61,14 @@ class Router {
     }
 
     public function getDisconnectionURL(){
+        return "index.php";
+    }
+
+    public function getNewComboURL(){
+        return "index.php?new";
+    }
+
+    public function getComboSubmissionURL(){
         return "index.php";
     }
 }
