@@ -7,6 +7,7 @@ class Combo {
     private $damage;
     private $author;
     private $difficulty;
+    private $normalizedCharacterName;
 
     public function __construct($name, $character, $description, $moves, $author, $difficulty="N/A", $damage="N/A"){
         $this->name = $name;
@@ -16,6 +17,7 @@ class Combo {
         $this->damage = $damage;
         $this->difficulty = $difficulty;
         $this->author = $author;
+        $this->normalizedCharacterName =  strtolower(str_replace(" ", "", $this->character));
     }
 
     public function getCharacter(){
@@ -44,6 +46,10 @@ class Combo {
 
     public function getName(){
         return $this->name;
+    }
+
+    public function getCharacterNormalizedName(){
+        return strtolower(str_replace(" ", "", $this->character));
     }
 }
 ?>

@@ -88,7 +88,7 @@ class ComboStorageFile implements ComboStorage {
                     array("c.LK", "c.MK", "s.HP"),
                     array("j.MP", "j.HP", "delay j.HK"),
                     array("tech forward"),
-                    array("OTG c.HK", "xx H Beat Extend"),
+                    array("OTG c.HK", "xx DP.HP Beat Extend"),
                     array("j.LK", "j.MK"),
                     array("s.MK"),
                     array("j.LP", "j.LK", "j.MKx2", "j.HP*"),
