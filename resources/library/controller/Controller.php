@@ -2,10 +2,12 @@
 class Controller{
     private $view;
     private $comboStorage;
+    private $userdb;
 
-    public function __construct(View $view, ComboStorage $comboStorage){
+    public function __construct(View $view, ComboStorage $comboStorage, UserDatabase $userdb){
         $this->view = $view;
-        $this->comboStorage = $comboStorage;
+        $this->combotStorage = $comboStorage;
+        $this->userdb = $userdb;
     }
 
     public function showCombo($id){
@@ -26,11 +28,23 @@ class Controller{
     }
 
     public function connect(){
-        //$user = $this->userdb->checkAuth($_POST["login"], $_POST["password"]);
-        //if($user){
+        $user = $this->userdb->checkAuth($_POST["login"], $_POST["password"]);
+        if($user){
             $_SESSION["user"] = "adrien";
             //$_SESSION["feedback"] = "You successfuly connected. Welcome {$user->name} !";
-        //}
+        }else{
+            //$_SESSION["feedback"] = "Connection failed";
+        }
+    }
+
+    public function disconnect(){
+        if(key_exists("user", $_SESSION)){
+            unset($_SESSION["user"]);
+        }
+    }
+
+    public function userConnected(){
+        return key_exists("user", $_SESSION);
     }
 }
 ?>

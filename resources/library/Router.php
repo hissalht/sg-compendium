@@ -2,13 +2,15 @@
 require_once("view/View.php");
 require_once("controller/Controller.php");
 require_once("model/ComboStorageFile.php");
+require_once("model/UserDatabasePSQL.php");
 
 class Router {
     public function main(){
         session_start();
         $view = new View($this);
         $comboStorage = new ComboStorageFile(TMP_DIR . "combo.db");
-        $controller = new Controller($view, $comboStorage);
+        $userdb = new UserDatabasePSQL();
+        $controller = new Controller($view, $comboStorage, $userdb);
 
         if(key_exists("reset", $_GET)){
             $comboStorage->reinit();
