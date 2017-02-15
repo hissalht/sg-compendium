@@ -5,12 +5,14 @@ class View {
     private $pageType;
     private $router;
     private $menu;
+    private $connectionFeedback;
 
     public function __construct($router){
         $this->router = $router;
         $this->menu = array(
             "Home" => $this->router->getHomeURL(),
             "List" => $this->router->getComboListURL(),
+            "New" =>  $this->router->getNewComboURL(),
             "About" => $this->router->getAboutPageURL(),
         );
     }
@@ -26,10 +28,12 @@ class View {
             $userSpace .= "<form method=\"POST\" action=\"".$this->router->getDisconnectionURL()."\"><input type=\"submit\" name=\"disconnect\" value=\"Disconnect\"></form>";
 
         }else{
-        ob_start();
+            //$connectionFeedback = "Unknown login/password";
+            ob_start();
             include(TEMPLATES_PATH . "connection_form.php");
             $userSpace = ob_get_clean();
         }
+        $userSpace .= "<p class=\"feedback\" id=\"connection-feedback\">".$this->connectionFeedback."</p>";
         include(TEMPLATES_PATH . "squelette.php");
     }
 
@@ -97,6 +101,10 @@ class View {
         //$move = str_replace("7", "<img src=\"img/layout/7.png\" alt=\"7\">", $move);
         //$move = str_replace("8", "<img src=\"img/layout/8.png\" alt=\"8\">", $move);
         return $move;
+    }
+
+    public function setConnectionFeedback($feedback){
+        $this->connectionFeedback = $feedback;
     }
 
 }

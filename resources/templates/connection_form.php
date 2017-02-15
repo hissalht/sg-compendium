@@ -1,4 +1,6 @@
-<form action="<?php echo $this->router->getConnectionURL(); ?>" method="POST">
+<form action="<?php
+/*echo $this->router->getConnectionURL();*/
+echo ""; ?>" method="POST">
     <label for="login">Login : </label>
     <input type="text" name="login" id="login">
     <label for="password">Password : </label>

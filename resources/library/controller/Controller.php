@@ -6,7 +6,7 @@ class Controller{
 
     public function __construct(View $view, ComboStorage $comboStorage, UserDatabase $userdb){
         $this->view = $view;
-        $this->combotStorage = $comboStorage;
+        $this->comboStorage = $comboStorage;
         $this->userdb = $userdb;
     }
 
@@ -31,15 +31,16 @@ class Controller{
         $user = $this->userdb->checkAuth($_POST["login"], $_POST["password"]);
         if($user){
             $_SESSION["user"] = $user;
-            //$_SESSION["feedback"] = "You successfuly connected. Welcome {$user->name} !";
+            $this->view->setConnectionFeedback("Connection success.");
         }else{
-            //$_SESSION["feedback"] = "Connection failed";
+            $this->view->setConnectionFeedback("Connection failed.");
         }
     }
 
     public function disconnect(){
         if(key_exists("user", $_SESSION)){
             unset($_SESSION["user"]);
+            $this->view->setConnectionFeedback("Disconnected.");
         }
     }
 
