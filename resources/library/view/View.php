@@ -1,4 +1,5 @@
 <?php
+require_once("model/ComboBuilder.php");
 class View {
     private $title;
     private $content;

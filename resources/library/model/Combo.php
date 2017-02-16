@@ -18,6 +18,14 @@ class Combo {
         "Robo-Fortune",
     );
 
+    public const DIFFICULTIES = array(
+        "Baby Combo",
+        "Quite Easy",
+        "Tricky",
+        "Impossible",
+        "TAS"
+    );
+
     private $name;
     private $character;
     private $description;

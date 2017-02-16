@@ -17,3 +17,16 @@ table, th, tr, td {
     border: 1px solid black;
     padding: 5px;
 }
+
+#new-combo {
+    border: 1px solid #FF00FF;
+}
+
+.field {
+    border: 1px solid #FFFF00;
+    margin: 5px;
+}
+
+.field > label::after {
+    content: " : ";
+}
