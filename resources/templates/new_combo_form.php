@@ -40,4 +40,8 @@
         <label for="moves">Moves</label>
         <textarea name="<?php echo ComboBuilder::MOVES_REF; ?>" id="moves"></textarea>
     </div>
+
+    <div class="field">
+        <input type="submit" value="Save">
+    </div>
 </form>

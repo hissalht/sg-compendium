@@ -11,7 +11,8 @@ class ComboBuilder {
     const AUTHOR_REF = "author";
     const DIFFICULTY_REF = "difficulty";
 
-    const ERROR_EMPTY_FIELD = "Champ(s) vide(s).";
+    const ERROR_EMPTY_FIELD = "Empty field";
+    const ERROR_WRONG_FORMAT = "Wrong format";
 
     public function __construct($data){
         $this->data = $data;
@@ -20,11 +21,11 @@ class ComboBuilder {
 
     public function createCombo(){
         $name = $this->data[self::NAME_REF];
-        $character = $this->data[self::CHARACTER_REF];
+        $character = (int) $this->data[self::CHARACTER_REF];
         $description = $this->data[self::DESCRIPTION_REF];
         $moves = $this->data[self::MOVES_REF];
-        $damages = $this->data[self::DAMAGE_REF];
-        $author = $this->data[self::AUTHOR_REF];
+        $damages = (int) $this->data[self::DAMAGE_REF];
+        $author = (int) $this->data[self::AUTHOR_REF];
         $difficulty = $this->data[self::DIFFICULTY_REF];
         return new Combo($name, $character, $description, $moves, $author, $difficulty, $damage);
     }
@@ -35,7 +36,21 @@ class ComboBuilder {
 
 
     private function checkFieldsFormat(){
+        //character
+        $char = $this->data[self::CHARACTER_REF];
+        if(!(ctype_digit($char) || 0 <= $char || $char < count(Combo::CHARACTERS))){
+            $this->error = self::ERROR_WRONG_FORMAT;
+            return FALSE;
+        }
 
+        $author = $this->data[self::AUTHOR_REF];
+        $dmg = $this->data[self::DAMAGE_REF];
+        if(!ctype_digit($author) || !ctype_digit($dmg)){
+            $this->error = self::ERROR_WRONG_FORMAT;
+            return FALSE;
+        }
+
+        return TRUE;
     }
 
 

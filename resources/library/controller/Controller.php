@@ -51,5 +51,22 @@ class Controller{
     public function showNewCombo(){
         $this->view->makeNewComboPage();
     }
+
+    public function saveNewCombo($data){
+        if(!$this->userConnected()){
+            $this->view->makeForbiddenPage();
+            return;
+        }
+
+        $comboBuilder = new ComboBuilder($data);
+        if(!$comboBuilder->isValid()){
+            $_SESSION["currentNewCombo"] = $comboBuilder;
+            $this->view->displayComboCreationFailure();
+        }else{
+            $combo = $comboBuilder->createCombo();
+            $id = $this->comboStorage->create($combo);
+            $this->view->displayComboCreationSuccess($id);
+        }
+    }
 }
 ?>

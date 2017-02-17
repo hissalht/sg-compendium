@@ -108,4 +108,19 @@ class View {
         $this->connectionFeedback = $feedback;
     }
 
+    public function makeForbiddenPage(){
+        $this->title = "INTERDIT";
+        $this->content = "<p>Vous n'avez pas l'autorisation d'acceder à cette page</p>";
+    }
+
+    public function displayComboCreationFailure(){
+        $_SESSION["creation_feedback"] = "Erreur lors de la création de l'animal.";
+        $this->router->POSTredirect($this->router->getNewComboURL());
+    }
+
+    public function displayComboCreationSuccess($id){
+        $_SESSION["creation_feedback"] = "Combo créé avec succès.";
+        $this->router->POSTredirect($this->router->getComboURL($id));
+    }
+
 }

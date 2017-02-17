@@ -33,6 +33,9 @@ class Router {
             $controller->showAbout();
         }else if(key_exists("new", $_GET)){
             $controller->showNewCombo();
+        }else if(key_exists("save", $_GET)){
+            $controller->saveNewCombo($_POST);
+
         }else{
             $controller->showHome();
         }
@@ -69,7 +72,12 @@ class Router {
     }
 
     public function getComboSubmissionURL(){
-        return "index.php";
+        return "index.php?save";
+    }
+
+    public function POSTredirect($url){
+        echo "DKSJHFKDSJFHLKDJF";
+        //header("Location : ".$url, true, 303);
     }
 }
 ?>
