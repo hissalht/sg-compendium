@@ -1,30 +1,59 @@
 <?php
 class Combo {
 
-    public const CHARACTERS = array(
-        "Big Band",
-        "Beowulf",
-        "Filia",
-        "Valentine",
-        "Peacock",
-        "Squigly",
-        "Eliza",
-        "Ms. Fortune",
-        "Cerebella",
-        "Parasoul",
-        "Double",
-        "Fukua",
-        "Painwheel",
-        "Robo-Fortune",
-    );
+    //public const CHARACTERS = array(
+        //"Big Band",
+        //"Beowulf",
+        //"Filia",
+        //"Valentine",
+        //"Peacock",
+        //"Squigly",
+        //"Eliza",
+        //"Ms. Fortune",
+        //"Cerebella",
+        //"Parasoul",
+        //"Double",
+        //"Fukua",
+        //"Painwheel",
+        //"Robo-Fortune",
+    //);
 
-    public const DIFFICULTIES = array(
-        "Baby Combo",
-        "Quite Easy",
-        "Tricky",
-        "Impossible",
-        "TAS"
-    );
+    //Methode statique dégueulasse parce vieille-version de PHP a décidé qu'on ne mettait pas de tableau en constante
+    public static function CHARACTERS(){
+        return array(
+            "Big Band",
+            "Beowulf",
+            "Filia",
+            "Valentine",
+            "Peacock",
+            "Squigly",
+            "Eliza",
+            "Ms. Fortune",
+            "Cerebella",
+            "Parasoul",
+            "Double",
+            "Fukua",
+            "Painwheel",
+            "Robo-Fortune",
+        );
+    }
+
+    public static function DIFFICULTIES(){
+        return array(
+            "Baby Combo",
+            "Quite Easy",
+            "Tricky",
+            "Impossible",
+            "TAS"
+        );
+    }
+    //public const DIFFICULTIES = array(
+        //"Baby Combo",
+        //"Quite Easy",
+        //"Tricky",
+        //"Impossible",
+        //"TAS"
+    //);
 
     private $name;
     private $character;
