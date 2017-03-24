@@ -9,7 +9,7 @@
             //"host" => "localhost"
         //)
     //));
-if(!defined("DB_NAME")) define("DB_NAME", "21400748_db");
+if(!defined("DB_NAME")) define("DB_NAME", "21400748_bd");
 if(!defined("DB_USER")) define("DB_USER", "21400748");
 if(!defined("DB_PASS")) define("DB_PASS", "rah2Thiekai1Rah9");
 if(!defined("DB_HOST")) define("DB_HOST", "postgresql.info.unicaen.fr");

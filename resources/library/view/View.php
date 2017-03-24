@@ -55,7 +55,7 @@ class View {
 
     public function makeComboPage($combo){
         $this->title = "Combo page";
-        $character = $combo->getCharacter();
+        $character = $combo->getCharacterName();
         $description = $combo->getDescription();
         $moveList = $combo->getMoves();
 

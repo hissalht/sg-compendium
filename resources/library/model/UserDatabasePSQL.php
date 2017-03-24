@@ -7,9 +7,12 @@ class UserDatabasePSQL implements UserDatabase {
 
     //public function __construct($user, $pass, $dbname){
     public function __construct(){
-        $user = CONFIG["db"]["username"];
-        $pass = CONFIG["db"]["password"];
-        $dsn = "pgsql:host=".CONFIG["db"]["host"].";dbname=".CONFIG["db"]["dbname"];
+        //$user = CONFIG["db"]["username"];
+        $user = DB_USER;
+        //$pass = CONFIG["db"]["password"];
+        $pass = DB_PASS;
+        //$dsn = "pgsql:host=".CONFIG["db"]["host"].";dbname=".CONFIG["db"]["dbname"];
+        $dsn = "pgsql:host=".DB_HOST.";dbname=".DB_NAME;
         //$dsn = "pgsql:host={$config["db"]["host"]};dbname={$dbname}";
 
         $this->db = new PDO($dsn, $user, $pass);

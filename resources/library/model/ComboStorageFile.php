@@ -45,6 +45,7 @@ class ComboStorageFile implements ComboStorage {
             1 => new Combo(
                 "BB baby combo",
                 "Big Band",
+                //0,
                 "Babby Combo for new Big Band players (works midscreen, works in the corner, not hard, does no damage)",
                 array(
                     array(
@@ -58,11 +59,13 @@ class ComboStorageFile implements ComboStorage {
                     ),
                 ),
                 "John Jhon",
-                "very easy"
+                "very easy",
+                2390
             ),
             2 => new Combo(
                 "FURY OF THE WOLF",
                 "Beowulf",
+                //1,
                 "Easy chair combo for Beowulf",
                 array(
                     array(
