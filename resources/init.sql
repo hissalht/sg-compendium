@@ -22,7 +22,8 @@ INSERT INTO Users VALUES (
     1,
     'John Jhon',
     'jjojjo',
-    '$2y$10$Nf/w6MTWlCIPof7/rVxT4OqAQCsqlPSPPwsLI8ijljTPZ0xwozvmy',
+    /*pass is abc*/
+    '$2y$10$TiHwRNLK/hQTWZk.sIYn8.rUaqJpzWm3Dza/lutR3o8g5JK.UqRyG',
     'jjojjo@mail.com',
     2
 );
