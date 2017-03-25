@@ -49,7 +49,7 @@ class Controller{
     }
 
     public function showNewCombo(){
-        $this->view->makeNewComboPage();
+        $this->view->makeNewComboPage($this->newCombo());
     }
 
     public function saveNewCombo($data){
@@ -58,15 +58,24 @@ class Controller{
             return;
         }
 
+        $data["author"] = $_SESSION["user"]->getId();
+
         $comboBuilder = new ComboBuilder($data);
         if(!$comboBuilder->isValid()){
             $_SESSION["currentNewCombo"] = $comboBuilder;
-            $this->view->displayComboCreationFailure();
+            $this->view->displayComboCreationFailure($comboBuilder->getError());
         }else{
             $combo = $comboBuilder->createCombo();
             $id = $this->comboStorage->create($combo);
             $this->view->displayComboCreationSuccess($id);
         }
+    }
+
+    public function newCombo(){
+        if(key_exists("currentNewCombo", $_SESSION))
+            return $_SESSION["currentNewCombo"];
+        else
+            return new AnimalBuilder(array());
     }
 }
 ?>

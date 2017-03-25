@@ -72,8 +72,9 @@ class View {
         $this->content = ob_get_clean();
     }
 
-    public function makeNewComboPage(){
+    public function makeNewComboPage($comboBuilder){
         $this->title = "New combo";
+        $comboData = $comboBuilder->getData();
         ob_start();
         include(TEMPLATES_PATH . "new_combo_form.php");
         $this->content = ob_get_clean();
@@ -113,8 +114,8 @@ class View {
         $this->content = "<p>Vous n'avez pas l'autorisation d'acceder à cette page</p>";
     }
 
-    public function displayComboCreationFailure(){
-        $_SESSION["creation_feedback"] = "Erreur lors de la création du combo";
+    public function displayComboCreationFailure($error){
+        $_SESSION["creation_feedback"] = $error;
         $this->router->POSTredirect($this->router->getNewComboURL());
     }
 

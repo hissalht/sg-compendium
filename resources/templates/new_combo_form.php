@@ -9,15 +9,21 @@ if(key_exists("creation_feedback", $_SESSION)){
 <form action="<?php echo $this->router->getComboSubmissionURL(); ?>" method="POST" id="new-combo">
     <div class="field">
         <label for="name">Combo name</label>
-        <input type="text" name="<?php echo ComboBuilder::NAME_REF; ?>" id="name">
+        <input type="text" name="<?php echo ComboBuilder::NAME_REF; ?>"
+                id="name" value="<?php echo $comboData[ComboBuilder::NAME_REF]; ?>">
     </div>
 
     <div class="field">
         <label for="character">Character</label>
-        <select name="<?php echo ComboBuilder::CHARACTER_REF; ?>" id="character" required>
+        <select name="<?php echo ComboBuilder::CHARACTER_REF; ?>" id="character"
+            required>
     <?php
     foreach(Combo::CHARACTERS() as $id => $char){
-        echo "<option value=\"" . $id . "\">". $char . "</option>\n";
+        //echo "<option value=\"" . $id . "\">". $char. "</option>\n";
+        echo "<option value=\"" . $id . "\"";
+        if($id == $comboData[ComboBuilder::CHARACTER_REF])
+            echo " selected=\"selected\"";
+        echo ">" . $char . "</option>\n";
     }
     ?>
         </select>
@@ -25,20 +31,29 @@ if(key_exists("creation_feedback", $_SESSION)){
 
     <div class="field">
         <label for="description">Description</label>
-        <textarea name="<?php echo Combobuilder::DESCRIPTION_REF; ?>" id="description"></textarea>
+        <textarea name="<?php echo Combobuilder::DESCRIPTION_REF; ?>"
+            id="description"
+            value="<?php echo $comboData[ComboBuilder::DESCRIPTION_REF]; ?>">
+        </textarea>
     </div>
 
     <div class="field">
         <label for="damages">Damages</label>
-        <input type="integer" id="damages" name="<?php echo ComboBuilder::DAMAGE_REF; ?>">
+        <input type="integer" id="damages" name="<?php echo ComboBuilder::DAMAGE_REF; ?>"
+        value="<?php echo $comboData[ComboBuilder::DAMAGE_REF]; ?>">
     </div>
 
     <div class="field">
         <label for="difficulty">Difficulty</label>
-        <select name="<?php echo ComboBuilder::DIFFICULTY_REF; ?>" id="difficulty" required>
+        <select name="<?php echo ComboBuilder::DIFFICULTY_REF; ?>" id="difficulty"
+        required value="<?php echo $comboData[ComboBuilder::DIFFICULTY_REF]; ?>">
     <?php
     foreach(Combo::DIFFICULTIES() as $id => $dif){
-        echo "<option value=\"" . $id . "\">" . $dif . "</option>\n";
+        //echo "<option value=\"" . $id . "\">" . $dif . "</option>\n";
+        echo "<option value=\"" . $id . "\"";
+        if($id == $comboData[ComboBuilder::DIFFICULTY_REF])
+            echo " selected=\"selected\"";
+        echo ">" . $dif . "</option>\n";
     }
     ?>
         </select>
@@ -46,7 +61,9 @@ if(key_exists("creation_feedback", $_SESSION)){
 
     <div class="field">
         <label for="moves">Moves</label>
-        <textarea name="<?php echo ComboBuilder::MOVES_REF; ?>" id="moves"></textarea>
+        <textarea name="<?php echo ComboBuilder::MOVES_REF; ?>"
+        id="moves" value="<?php echo $comboData[ComboBuilder::MOVES_REF]; ?>">
+        </textarea>
     </div>
 
     <div class="field">

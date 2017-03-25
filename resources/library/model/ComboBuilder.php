@@ -15,6 +15,21 @@ class ComboBuilder {
     const ERROR_WRONG_FORMAT = "Wrong format";
 
     public function __construct($data){
+        if(!key_exists(self::NAME_REF, $data))
+            $data[self::NAME_REF] = "";
+        if(!key_exists(self::CHARACTER_REF, $data))
+            $data[self::CHARACTER_REF] = "";
+        if(!key_exists(self::DESCRIPTION_REF, $data))
+            $data[self::DESCRIPTION_REF] = "";
+        if(!key_exists(self::MOVES_REF, $data))
+            $data[self::MOVES_REF] = "";
+        if(!key_exists(self::DAMAGE_REF, $data))
+            $data[self::DAMAGE_REF] = "";
+        if(!key_exists(self::AUTHOR_REF, $data))
+            $data[self::AUTHOR_REF] = "";
+        if(!key_exists(self::DIFFICULTY_REF, $data))
+            $data[self::DIFFICULTY_REF] = "";
+
         $this->data = $data;
         $this->error = null;
     }
@@ -27,7 +42,7 @@ class ComboBuilder {
         $damages = (int) $this->data[self::DAMAGE_REF];
         $author = (int) $this->data[self::AUTHOR_REF];
         $difficulty = $this->data[self::DIFFICULTY_REF];
-        return new Combo($name, $character, $description, $moves, $author, $difficulty, $damage);
+        return new Combo($name, $character, $description, $moves, $author, $difficulty, $damages);
     }
 
     public function isValid(){
@@ -37,21 +52,42 @@ class ComboBuilder {
 
     private function checkFieldsFormat(){
         //character
+        //$char = $this->data[self::CHARACTER_REF];
+        //if(!(ctype_digit($char) || 0 <= $char || $char < count(Combo::CHARACTERS))){
+            //$this->error = self::ERROR_WRONG_FORMAT;
+            //return FALSE;
+        //}
+
+        //$author = $this->data[self::AUTHOR_REF];
+        //$dmg = $this->data[self::DAMAGE_REF];
+        //if(!ctype_digit($author) || !ctype_digit($dmg)){
+            //$this->error = self::ERROR_WRONG_FORMAT;
+            //return FALSE;
+        //}
+
+        //return TRUE;
+
         $char = $this->data[self::CHARACTER_REF];
-        if(!(ctype_digit($char) || 0 <= $char || $char < count(Combo::CHARACTERS))){
-            $this->error = self::ERROR_WRONG_FORMAT;
+        if(!(ctype_digit($char) && 0 <= $char && $char < count(Combo::CHARACTERS()))){
+            $this->error = "character must be a number between 0 and 13, value=" . $char;
             return FALSE;
         }
 
-        $author = $this->data[self::AUTHOR_REF];
+        //pas besoin de tester, ne vient pas du client
+        //$author = $this->data[self::AUTHOR_REF];
+        //if(!(ctype_digit($author))){
+            //$this->error = "author must be an user id, value=" . $author;
+            //return FALSE;
+        //}
+
         $dmg = $this->data[self::DAMAGE_REF];
-        if(!ctype_digit($author) || !ctype_digit($dmg)){
-            $this->error = self::ERROR_WRONG_FORMAT;
+        if(!(ctype_digit($dmg) && 0 <= $dmg)){
+            $this->error = "damages must be a positive integer, value=" . $dmg;
             return FALSE;
         }
 
         return TRUE;
-    }
+     }
 
 
     private function checkForEmptyFields(){
@@ -66,8 +102,13 @@ class ComboBuilder {
 
 
     private function checkEmptyField($field){
-        if(!key_exists($field, $this->data) || empty($this->data[$field])){
-            $this->error = self::ERROR_EMPTY_FIELD;
+        //if(!key_exists($field, $this->data) || empty($this->data[$field])){
+            //$this->error = self::ERROR_EMPTY_FIELD . " : " . $field;
+            //return FALSE;
+        //}
+        //return TRUE;
+        if(strlen($this->data[$field]) <= 0){
+            $this->error = self::ERROR_EMPTY_FIELD . " : " . $field;
             return FALSE;
         }
         return TRUE;
@@ -77,5 +118,9 @@ class ComboBuilder {
         return $this->error;
     }
 
+
+    public function getData(){
+        return $this->data;
+    }
 }
 ?>
