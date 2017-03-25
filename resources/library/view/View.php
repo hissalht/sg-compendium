@@ -35,6 +35,7 @@ class View {
             $userSpace = ob_get_clean();
         }
         $userSpace .= "<p class=\"feedback\" id=\"connection-feedback\">".$this->connectionFeedback."</p>";
+        echo "tttt";
         include(TEMPLATES_PATH . "squelette.php");
     }
 

@@ -8,7 +8,7 @@
         <label for="character">Character</label>
         <select name="<?php echo ComboBuilder::CHARACTER_REF; ?>" id="character" required>
     <?php
-    foreach(Combo::CHARACTERS as $id => $char){
+    foreach(Combo::CHARACTERS() as $id => $char){
         echo "<option value=\"" . $id . "\">". $char . "</option>\n";
     }
     ?>
@@ -29,7 +29,7 @@
         <label for="difficulty">Difficulty</label>
         <select name="<?php echo ComboBuilder::DIFFICULTY_REF; ?>" id="difficulty" required>
     <?php
-    foreach(Combo::DIFFICULTIES as $id => $dif){
+    foreach(Combo::DIFFICULTIES() as $id => $dif){
         echo "<option value=\"" . $id . "\">" . $dif . "</option>\n";
     }
     ?>
