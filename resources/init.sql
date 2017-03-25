@@ -14,7 +14,9 @@ CREATE TABLE Combos (
     description VARCHAR(2000),
     author  INTEGER,
     charac  INTEGER,
-    moves   TEXT[]
+    moves   TEXT[],
+    difficulty INTEGER,
+    damages INTEGER
 );
 
 
@@ -44,5 +46,7 @@ INSERT INTO Combos VALUES (
         "s.MK", "NS",
         "j.LP", "j.LK", "j.MKx2", "j.HP*", "NS",
         "c.LPx2", "c.MK", "s.HK", "xx H Take the A-Train", "xx Super Sonic Jazz"
-    }'
+    }',
+    3,
+    2500
 );
