@@ -76,8 +76,8 @@ class Router {
     }
 
     public function POSTredirect($url){
-        echo "DKSJHFKDSJFHLKDJF";
-        //header("Location : ".$url, true, 303);
+        error_log($url);
+        header("Location: ".$url, true, 303);
     }
 }
 ?>

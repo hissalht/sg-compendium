@@ -1,3 +1,11 @@
+<p class="feedback">
+<?php
+if(key_exists("creation_feedback", $_SESSION)){
+    echo $_SESSION["creation_feedback"] . "\n";
+    unset($_SESSION["creation_feedback"]);
+}
+?>
+</p>
 <form action="<?php echo $this->router->getComboSubmissionURL(); ?>" method="POST" id="new-combo">
     <div class="field">
         <label for="name">Combo name</label>

@@ -35,7 +35,6 @@ class View {
             $userSpace = ob_get_clean();
         }
         $userSpace .= "<p class=\"feedback\" id=\"connection-feedback\">".$this->connectionFeedback."</p>";
-        echo "tttt";
         include(TEMPLATES_PATH . "squelette.php");
     }
 
@@ -115,7 +114,7 @@ class View {
     }
 
     public function displayComboCreationFailure(){
-        $_SESSION["creation_feedback"] = "Erreur lors de la création de l'animal.";
+        $_SESSION["creation_feedback"] = "Erreur lors de la création du combo";
         $this->router->POSTredirect($this->router->getNewComboURL());
     }
 
