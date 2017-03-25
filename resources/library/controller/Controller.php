@@ -66,16 +66,18 @@ class Controller{
             $this->view->displayComboCreationFailure($comboBuilder->getError());
         }else{
             $combo = $comboBuilder->createCombo();
-            $id = $this->comboStorage->create($combo);
+            $id = $this->comboStorage->addCombo($combo);
             $this->view->displayComboCreationSuccess($id);
         }
     }
 
     public function newCombo(){
-        if(key_exists("currentNewCombo", $_SESSION))
-            return $_SESSION["currentNewCombo"];
-        else
-            return new AnimalBuilder(array());
+        if(key_exists("currentNewCombo", $_SESSION)){
+            $builder = $_SESSION["currentNewCombo"];
+            unset($_SESSION["currentNewCombo"]);
+            return $builder;
+        }else
+            return new ComboBuilder(array());
     }
 }
 ?>

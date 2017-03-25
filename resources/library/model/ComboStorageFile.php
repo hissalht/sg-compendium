@@ -35,49 +35,30 @@ class ComboStorageFile implements ComboStorage {
     }
 
     public function addCombo(Combo $combo){
-        $this->arr[$nextId] = $combo;
+        $this->arr[$this->nextId] = $combo;
         $this->nextId += 1;
-        return ($nextId - 1);
+        return ($this->nextId - 1);
     }
 
     public function reinit(){
         $this->arr = array(
             1 => new Combo(
                 "BB baby combo",
-                "Big Band",
-                //0,
+                //"Big Band",
+                0,
                 "Babby Combo for new Big Band players (works midscreen, works in the corner, not hard, does no damage)",
-                array(
-                    array(
-                        "c.LK",
-                        "c.MK",
-                        "s.HP",
-                        "j.MP",
-                        "j.HP",
-                        "QCB.HK Cymbal Clash",
-                        "charge f.HP Take the A-Train",
-                    ),
-                ),
+                array("c.LK, c.MK, s.HP, j.MP, j.HP, QCB.HK Cymbal Clash, charge f.HP Take the A-Train"),
                 "John Jhon",
                 "very easy",
                 2390
             ),
             2 => new Combo(
                 "FURY OF THE WOLF",
-                "Beowulf",
-                //1,
+                //"Beowulf",
+                1,
                 "Easy chair combo for Beowulf",
                 array(
-                    array(
-                        "c.LK",
-                        "s.MP",
-                        "c.HK",
-                        "QCF.LK",
-                        "8LK",
-                        "2LK",
-                        "c.MP (grab OTG)",
-                        "PP Blyat Dance",
-                    ),
+                    "c.LK, s.MP, c.HK, QCF.LK, 8LK, 2LK, c.MP (grab OTG), PP Blyat Dance"
                 ),
                 "xXx_WereWolfDarkShadowKiller_xXx",
                 "very hard",
@@ -85,17 +66,18 @@ class ComboStorageFile implements ComboStorage {
             ),
             3 => new Combo(
                 "BB BnB mid-screen",
-                "Big Band",
+                //"Big Band",
+                0,
                 "Intermediate mid-screen bread'n'butter combo for Big Band.<br> * The j.HP is supposed to whiff. This causes Big Band to fastfall which lets you link a light normal after. If this is too hard, any combo that includes this can be done with j.MK instead of j.MKx2 for a little less damage.",
                 array(
-                    array("c.LK", "c.MK", "s.HP"),
-                    array("j.MP", "j.HP", "delay j.HK"),
-                    array("tech forward"),
-                    array("OTG c.HK", "xx DP.HP Beat Extend"),
-                    array("j.LK", "j.MK"),
-                    array("s.MK"),
-                    array("j.LP", "j.LK", "j.MKx2", "j.HP*"),
-                    array("c.LPx2", "c.MK", "s.HK", "xx H Take the A-Train", "xx Super Sonic Jazz"),
+                    "c.LK c.MK s.HP",
+                    "j.MP j.HP delay j.HK",
+                    "tech forward",
+                    "OTG c.HK xx DP.HP Beat Extend",
+                    "j.LK, j.MK",
+                    "s.MK",
+                    "j.LP, j.LK, j.MKx2, j.HP*",
+                    "c.LPx2, c.MK, s.HK xx H Take the A-Train xx Super Sonic Jazz",
                 ),
                 "Internet Dude",
                 "Intermediate",

@@ -32,9 +32,7 @@ if(key_exists("creation_feedback", $_SESSION)){
     <div class="field">
         <label for="description">Description</label>
         <textarea name="<?php echo Combobuilder::DESCRIPTION_REF; ?>"
-            id="description"
-            value="<?php echo $comboData[ComboBuilder::DESCRIPTION_REF]; ?>">
-        </textarea>
+            id="description"><?php echo $comboData[ComboBuilder::DESCRIPTION_REF]; ?></textarea>
     </div>
 
     <div class="field">
@@ -62,8 +60,7 @@ if(key_exists("creation_feedback", $_SESSION)){
     <div class="field">
         <label for="moves">Moves</label>
         <textarea name="<?php echo ComboBuilder::MOVES_REF; ?>"
-        id="moves" value="<?php echo $comboData[ComboBuilder::MOVES_REF]; ?>">
-        </textarea>
+        id="moves"><?php echo $comboData[ComboBuilder::MOVES_REF]; ?></textarea>
     </div>
 
     <div class="field">

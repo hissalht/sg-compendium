@@ -81,7 +81,8 @@ class Combo {
 
     public function getCharacterName(){
         //return self::CHARACTERS[$this->character];
-        return $this->character;
+        //return $this->character;
+        return self::CHARACTERS()[$this->character];
     }
 
     public function getDescription(){

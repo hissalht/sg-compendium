@@ -38,10 +38,14 @@ class ComboBuilder {
         $name = $this->data[self::NAME_REF];
         $character = (int) $this->data[self::CHARACTER_REF];
         $description = $this->data[self::DESCRIPTION_REF];
-        $moves = $this->data[self::MOVES_REF];
+
+        //$moves = $this->data[self::MOVES_REF];
+        $moves = explode("\n", $this->data[self::MOVES_REF]);
+
         $damages = (int) $this->data[self::DAMAGE_REF];
         $author = (int) $this->data[self::AUTHOR_REF];
         $difficulty = $this->data[self::DIFFICULTY_REF];
+
         return new Combo($name, $character, $description, $moves, $author, $difficulty, $damages);
     }
 
@@ -83,6 +87,18 @@ class ComboBuilder {
         $dmg = $this->data[self::DAMAGE_REF];
         if(!(ctype_digit($dmg) && 0 <= $dmg)){
             $this->error = "damages must be a positive integer, value=" . $dmg;
+            return FALSE;
+        }
+
+        $moves = $this->data[self::MOVES_REF];
+        if(ctype_space($moves)){
+            $this->error = "The moves text cannot contain only whitespaces";
+            return FALSE;
+        }
+
+        $description = $this->data[self::DESCRIPTION_REF];
+        if(ctype_space($description)){
+            $this->error = "The description text cannot contain only whitespaces";
             return FALSE;
         }
 
