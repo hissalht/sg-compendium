@@ -5,6 +5,7 @@ class ComboStoragePSQL implements ComboStorage {
     private $db;
     private $getByIdStatement;
     private $getAllStatement;
+    private $addStatement;
 
     public function __construct(){
         $user = DB_USER;
@@ -17,6 +18,9 @@ class ComboStoragePSQL implements ComboStorage {
         $this->getByIdStatement = $this->db->prepare(
             "SELECT * FROM combos WHERE id = :comboId");
         $this->getAllStatement = $this->db->prepare("SELECT * FROM combos");
+        $this->addStatement = $this->db->prepare(
+            "INSERT INTO Combos VALUES (
+                :id, :name, :description, :author, :charac, :moves, :difficulty, :damages)");
     }
 
     public function getCombo($id){
@@ -25,8 +29,8 @@ class ComboStoragePSQL implements ComboStorage {
         $result = $this->getByIdStatement->fetchAll(PDO::FETCH_ASSOC);
         $line = $result[0];
 
-        return new Combo($line["name"], $line["charac"], $line["description"],
-            self::array_psql_to_php($line["moves"]),
+        return new Combo($line["name"], $line["charac"],
+            $line["description"], self::array_psql_to_php($line["moves"]),
             $line["author"], $line["difficulty"], $line["damages"]);
     }
 
@@ -34,19 +38,32 @@ class ComboStoragePSQL implements ComboStorage {
     public function getAllCombos(){
         $this->getAllStatement->execute(array());
         $statementResult = $this->getAllStatement->fetchAll(PDO::FETCH_ASSOC);
+        $id = 1;
 
         $result = array();
         foreach($statementResult as $line){
-            $combo = new Combo($line["name"], $line["charac"], $line["description"],
-                self::array_psql_to_php($line["moves"]),
+            $combo = new Combo($line["name"], $line["charac"],
+                $line["description"], self::array_psql_to_php($line["moves"]),
                 $line["author"], $line["difficulty"], $line["damages"]);
-            $result[] = $combo;
+            $result[$id] = $combo;
+            $id++;
         }
         return $result;
     }
 
 
     public function addCombo(Combo $combo){
+        //$data = array(
+            //":id" => $combo->getId(),
+            //":name" => $combo->getName(),
+            //":description" => $combo->getDescription(),
+            //":author" => $combo->getAuthor(),
+            //":charac" => $combo->getCharacterId(),
+            //":moves" => $combo->getMoves(),
+            //":difficulty" => $combo->getDifficultyId(),
+            //":damages" => $combo->getDamages(),
+        //);
+        //$result =
     }
 
 

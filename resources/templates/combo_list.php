@@ -2,9 +2,9 @@
     <p>Ici bientôt, une interface pour filtrer les combos</p>
 </div>
 <table>
-    <th>ID</th><th>Character</th><th>Combo name</th><th>Author</th><th>Damages</th>
+    <tr><th>ID</th><th>Character</th><th>Combo name</th><th>Author</th><th>Damages</th></tr>
 <?php
-foreach($combos as $id =>  $combo){
+foreach($combos as $id => $combo){
     echo "<tr class=\"".$combo->getCharacterNormalizedName()."\">";
     echo "<td>".$id."</td>";
     echo "<td>".$combo->getCharacterName()."</td>";

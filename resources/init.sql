@@ -9,14 +9,14 @@ CREATE TABLE Users (
 );
 
 CREATE TABLE Combos (
-    id      INTEGER,
-    name    VARCHAR(100),
-    description VARCHAR(2000),
-    author  INTEGER,
-    charac  INTEGER,
-    moves   TEXT,
-    difficulty INTEGER,
-    damages INTEGER
+    id      BIGSERIAL PRIMARY KEY,
+    name    VARCHAR(100) NOT NULL,
+    description VARCHAR(2000) NOT NULL,
+    author  INTEGER NOT NULL,
+    charac  INTEGER NOT NULL,
+    moves   TEXT NOT NULL,
+    difficulty INTEGER NOT NULL,
+    damages INTEGER NOT NULL
 );
 
 
@@ -31,8 +31,8 @@ INSERT INTO Users VALUES (
 );
 
 
-INSERT INTO Combos VALUES (
-    0,
+INSERT INTO Combos (name, description, author, charac, moves, difficulty, damages)
+VALUES(
     'BB Intermediate BNB',
     'Intermediate mid-screen bread''n''butter combo for Big Band.<br> * The j.HP is supposed to whiff. This causes Big Band to fastfall which lets you link a light normal after. If this is too hard, any combo that includes this can be done with j.MK instead of j.MKx2 for a little less damage.',
     1,
