@@ -6,7 +6,13 @@ if(key_exists("creation_feedback", $_SESSION)){
 }
 ?>
 </p>
-<form action="<?php echo $this->router->getComboSubmissionURL(); ?>" method="POST" id="new-combo">
+<form action="<?php
+if(is_null($editedId)){
+    echo $this->router->getComboSubmissionURL();
+}else{
+    echo $this->router->getComboReplacementURL($editedId);
+}
+?>" method="POST" id="new-combo">
     <div class="field">
         <label for="name">Combo name</label>
         <input type="text" name="<?php echo ComboBuilder::NAME_REF; ?>"

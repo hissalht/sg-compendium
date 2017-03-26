@@ -72,7 +72,7 @@ class View {
         $this->content = ob_get_clean();
     }
 
-    public function makeNewComboPage($comboBuilder){
+    public function makeNewComboPage($comboBuilder, $editedId=null){
         $this->title = "New combo";
         $comboData = $comboBuilder->getData();
         ob_start();

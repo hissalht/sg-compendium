@@ -6,6 +6,7 @@ class ComboStoragePSQL implements ComboStorage {
     private $getByIdStatement;
     private $getAllStatement;
     private $addStatement;
+    private $replaceStatement;
 
     public function __construct(){
         $user = DB_USER;
@@ -24,6 +25,14 @@ class ComboStoragePSQL implements ComboStorage {
                 :name, :description, :author, :charac, :moves, :difficulty, :damages
             )
             RETURNING id"
+        );
+        $this->replaceStatement = $this->db->prepare(
+            "UPDATE Combos
+             SET
+                 name = :name, description = :description, author = :author,
+                 charac = :charac, moves = :moves, difficulty = :difficulty,
+                 damages = :damages
+             WHERE id = :id"
         );
     }
 
@@ -71,6 +80,26 @@ class ComboStoragePSQL implements ComboStorage {
         $result = $this->addStatement->fetchAll(PDO::FETCH_ASSOC);
         $line = $result[0];
         return $line["id"];
+    }
+
+
+    public function replaceCombo(Combo $newCombo, $replacedId){
+        $moves = "'\"" . implode("\",\"", $newCombo->getMoves()) . "\"'";
+        $data = array(
+            ":name" => $newCombo->getName(),
+            ":description" => $newCombo->getDescription(),
+            ":author" => $newCombo->getAuthor(),
+            ":charac" => $newCombo->getCharacterId(),
+            ":moves" => $moves,
+            ":difficulty" => $newCombo->getDifficultyId(),
+            ":damages" => $newCombo->getDamages(),
+            ":id" => $replacedId
+        );
+        $this->replaceStatement->execute($data);
+        //$result = $this->replaceStatement->fetchAll(PDO::FETCH_ASSOC);
+        //$line = $result[0];
+        //return $line["id"];
+        return $replacedId;
     }
 
 

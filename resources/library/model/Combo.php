@@ -116,5 +116,18 @@ class Combo {
     public function getCharacterNormalizedName(){
         return strtolower(str_replace(" ", "", self::CHARACTERS()[$this->character]));
     }
+
+    public function getComboBuilder(){
+        $data = array(
+            ComboBuilder::NAME_REF          => $this->getName(),
+            ComboBuilder::CHARACTER_REF     => $this->getCharacterId(),
+            ComboBuilder::DESCRIPTION_REF   => $this->getDescription(),
+            ComboBuilder::MOVES_REF         => implode("\n", $this->getMoves()),
+            ComboBuilder::DAMAGE_REF        => $this->getDamages(),
+            ComboBuilder::AUTHOR_REF        => $this->getAuthor(),
+            ComboBuilder::DIFFICULTY_REF    => $this->getDifficultyId(),
+        );
+        return new ComboBuilder($data);
+    }
 }
 ?>

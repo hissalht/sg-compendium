@@ -79,5 +79,37 @@ class Controller{
         }else
             return new ComboBuilder(array());
     }
+
+    public function showModifyCombo($modifiedId){
+        $this->view->makeNewComboPage($this->getNewEditedCombo($modifiedId), $modifiedId);
+    }
+
+    public function replaceCombo($comboData, $replacedId){
+        if(!$this->userConnected()){
+            $this->view->makeForbiddenPage();
+            return;
+        }
+
+        $comboData["author"] = $_SESSION["user"]->getId();
+        $comboBuilder = new ComboBuilder($comboData);
+        if(!$comboBuilder->isValid()){
+            $_SESSION["currentEditedCombo"] = $comboBuilder;
+            $this->view->displayComboCreationFailure($comboBuilder->getError());
+        }else{
+            $combo = $comboBuilder->createCombo();
+            //$id = $this->comboStorage->addCombo($combo);
+            $id = $this->comboStorage->replaceCombo($combo, $replacedId);
+            $this->view->displayComboCreationSuccess($id);
+        }
+    }
+
+    public function getNewEditedCombo($modifiedId){
+        if(key_exists("currentEditedCombo", $_SESSION)){
+            $builder = $_SESSION["currentEditedCombo"];
+            unset($_SESSION["currentEditedCombo"]);
+            return $builder;
+        }else
+            return $this->comboStorage->getCombo($modifiedId)->getComboBuilder();
+    }
 }
 ?>

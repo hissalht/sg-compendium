@@ -37,7 +37,12 @@ class Router {
             $controller->showNewCombo();
         }else if(key_exists("save", $_GET)){
             $controller->saveNewCombo($_POST);
-
+        }else if(key_exists("edit", $_GET)){
+            //édite un combo existant
+            $controller->showModifyCombo($_GET["edit"]);
+        }else if(key_exists("replace", $_GET)){
+            //remplace un combo existant
+            $controller->replaceCombo($_POST, $_GET["replace"]);
         }else{
             $controller->showHome();
         }
@@ -75,6 +80,10 @@ class Router {
 
     public function getComboSubmissionURL(){
         return "index.php?save";
+    }
+
+    public function getComboReplacementURL($replacedId){
+        return "index.php?replace=" . $replacedId;
     }
 
     public function POSTredirect($url){
