@@ -1,5 +1,8 @@
 <?php
 class UserAccount {
+    const STATUS_ADMIN = 1;
+    const STATUS_NORMAL = 2;
+
     private $login;
     private $name;
     private $status;
@@ -32,6 +35,17 @@ class UserAccount {
 
     public function getId(){
         return $this->id;
+    }
+
+    public function getStatusName(){
+        switch($this->status){
+            case self::STATUS_ADMIN:
+                return "Administrateur";
+            case self::STATUS_NORMAL:
+                return "Normal";
+            default:
+                return "Inconnus";
+        }
     }
 }
 ?>

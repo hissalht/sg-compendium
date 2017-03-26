@@ -1,4 +1,6 @@
 <?php
+require_once("model/UserBuilder.php");
+require_once("model/ComboBuilder.php");
 class Controller{
     private $view;
     private $comboStorage;
@@ -145,6 +147,31 @@ class Controller{
         }else{
             $this->view->displayComboDeletionFailure($id);
         }
+    }
+
+    public function showNewUser(){
+        $this->view->makeNewUserPage($this->newUser());
+    }
+
+    public function saveNewUser($data){
+        $userBuilder = new UserBuilder($data);
+        if(!$userBuilder->isValid()){
+            $_SESSION["currentNewUser"] = $userBuilder;
+            $this->view->displayUserCreationFailure("BBB".$userBuilder->getError());
+        }else{
+            $user = $userBuilder->createUser();
+            $this->userdb->addUser($user, $data[UserBuilder::PASSWORD_REF]);
+            $this->view->displayUserCreationSuccess();
+        }
+    }
+
+    public function newUser(){
+        if(key_exists("currentNewUser", $_SESSION)){
+            $builder = $_SESSION["currentNewUser"];
+            unset($_SESSION["currentNewUser"]);
+            return $builder;
+        }else
+            return new UserBuilder(array());
     }
 }
 ?>

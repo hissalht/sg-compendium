@@ -14,8 +14,10 @@ class View {
         $this->menu = array(
             "Home" => $this->router->getHomeURL(),
             "List" => $this->router->getComboListURL(),
-            "New" =>  $this->router->getNewComboURL(),
+            "New Combo" =>  $this->router->getNewComboURL(),
+            "Sign in" => $this->router->getSigninURL(),
             "About" => $this->router->getAboutPageURL(),
+
         );
         $this->feedback = $feedback;
     }
@@ -135,6 +137,24 @@ class View {
 
     public function displayComboDeletionFailure($id){
         $_SESSION["creation_feedback"] = "Combo [" . $id . "] n'a pas pu être supprimé. Vérifiez qu'il est bien présent dans la liste";
+        $this->router->POSTredirect($this->router->getHomeURL());
+    }
+
+    public function makeNewUserPage($userBuilder){
+        $this->title = "Nouvel utilisateur";
+        $userData = $userBuilder->getData();
+        ob_start();
+        include(TEMPLATES_PATH . "new_user_form.php");
+        $this->content = ob_get_clean();
+    }
+
+    public function displayUserCreationFailure($error){
+        $_SESSION["creation_feedback"] = $error;
+        $this->router->POSTredirect($this->router->getSigninURL());
+    }
+
+    public function displayUserCreationSuccess(){
+        $_SESSION["creation_feedback"] = "Votre compte a bien été créé. Vous pouvez maintenant vous connecter";
         $this->router->POSTredirect($this->router->getHomeURL());
     }
 

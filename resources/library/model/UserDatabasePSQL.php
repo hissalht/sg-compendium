@@ -4,6 +4,7 @@ require_once("User.php");
 class UserDatabasePSQL implements UserDatabase {
     private $db;
     private $loginStatement;
+    private $addStatement;
 
     //public function __construct($user, $pass, $dbname){
     public function __construct(){
@@ -20,6 +21,12 @@ class UserDatabasePSQL implements UserDatabase {
 
         $rq = "SELECT * FROM users WHERE login = :login";
         $this->loginStatement = $this->db->prepare($rq);
+
+        $this->addStatement = $this->db->prepare(
+            "INSERT INTO Users (name, login, hash, mail, status) VALUES (
+                :name, :login, :hash, :mail, :status
+            )"
+        );
     }
 
 
@@ -36,5 +43,27 @@ class UserDatabasePSQL implements UserDatabase {
         }
         return false;
     }
+
+
+    public function loginIsAvailable($login){
+        $data = array(":login" => $login);
+        $this->loginStatement->execute($data);
+        $result = $this->loginStatement->fetchAll(PDO::FETCH_ASSOC);
+        return (count($result) === 0);
+    }
+
+
+    public function addUser($user, $password){
+        $hash = password_hash($password, PASSWORD_BCRYPT);
+        $data = array(
+            ":name" => $user->getName(),
+            ":login" => $user->getLogin(),
+            ":hash" => $hash,
+            ":mail" => $user->getMail(),
+            ":status" => $user->getStatus()
+        );
+        return $this->addStatement->execute($data);
+    }
+
 }
 ?>

@@ -8,7 +8,6 @@ require_once("model/UserDatabasePSQL.php");
 class Router {
     public function main(){
         session_start();
-        
         $feedback = isset($_SESSION["creation_feedback"]) ? $_SESSION["creation_feedback"] : "";
         $_SESSION["creation_feedback"] = "";
 
@@ -30,6 +29,12 @@ class Router {
             $controller->disconnect();
         }
 
+        if(isset($_POST[UserBuilder::LOGIN_REF]) &&
+                isset($_POST[UserBuilder::NAME_REF]) &&
+                isset($_POST[UserBuilder::MAIL_REF]) &&
+                isset($_POST[UserBuilder::PASSWORD_REF])){
+            $controller->saveNewUser($_POST);
+        }
 
         if(key_exists("combo", $_GET)){
             $controller->showCombo($_GET["combo"]);
@@ -50,6 +55,8 @@ class Router {
         }else if(key_exists("delete", $_GET)){
             //supprime un combo existant
             $controller->deleteCombo($_GET["delete"]);
+        }else if(key_exists("signin", $_GET)){
+            $controller->showNewUser();
         }else{
             $controller->showHome();
         }
@@ -99,6 +106,14 @@ class Router {
 
     public function getComboDeletionURL($id){
         return "index.php?delete=" . $id;
+    }
+
+    public function getSigninURL(){
+        return "index.php?signin";
+    }
+
+    public function getNewUserURL(){
+        return "index.php?newUser";
     }
 
     public function POSTredirect($url){
