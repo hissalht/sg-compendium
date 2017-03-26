@@ -19,8 +19,12 @@ class ComboStoragePSQL implements ComboStorage {
             "SELECT * FROM combos WHERE id = :comboId");
         $this->getAllStatement = $this->db->prepare("SELECT * FROM combos");
         $this->addStatement = $this->db->prepare(
-            "INSERT INTO Combos VALUES (
-                :id, :name, :description, :author, :charac, :moves, :difficulty, :damages)");
+            "INSERT INTO Combos (name, description, author, charac, moves, difficulty, damages)
+            VALUES (
+                :name, :description, :author, :charac, :moves, :difficulty, :damages
+            )
+            RETURNING id"
+        );
     }
 
     public function getCombo($id){
@@ -53,17 +57,20 @@ class ComboStoragePSQL implements ComboStorage {
 
 
     public function addCombo(Combo $combo){
-        //$data = array(
-            //":id" => $combo->getId(),
-            //":name" => $combo->getName(),
-            //":description" => $combo->getDescription(),
-            //":author" => $combo->getAuthor(),
-            //":charac" => $combo->getCharacterId(),
-            //":moves" => $combo->getMoves(),
-            //":difficulty" => $combo->getDifficultyId(),
-            //":damages" => $combo->getDamages(),
-        //);
-        //$result =
+        $moves = "'\"" . implode("\",\"", $combo->getMoves()) . "\"'";
+        $data = array(
+            ":name" => $combo->getName(),
+            ":description" => $combo->getDescription(),
+            ":author" => $combo->getAuthor(),
+            ":charac" => $combo->getCharacterId(),
+            ":moves" => $moves,
+            ":difficulty" => $combo->getDifficultyId(),
+            ":damages" => $combo->getDamages(),
+        );
+        $this->addStatement->execute($data);
+        $result = $this->addStatement->fetchAll(PDO::FETCH_ASSOC);
+        $line = $result[0];
+        return $line["id"];
     }
 
 

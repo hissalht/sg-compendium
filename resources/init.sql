@@ -40,4 +40,4 @@ VALUES(
         '"c.LK, c.MK, s.HP","j.MP, j.HP, delay j.HK","tech forward","OTG c.HK, xx DP.HP Beat Extend","j.LK, j.MK","s.MK","j.LP, j.LK, j.MKx2, j.HP*","c.LPx2, c.MK, s.HK, xx H Take the A-Train, xx Super Sonic Jazz"',
     3,
     2500
-);
+) RETURNING id;
