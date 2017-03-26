@@ -109,9 +109,11 @@ class View {
         $this->connectionFeedback = $feedback;
     }
 
-    public function makeForbiddenPage(){
+    public function makeForbiddenPage($msg=null){
         $this->title = "INTERDIT";
         $this->content = "<p>Vous n'avez pas l'autorisation d'acceder à cette page</p>";
+        if(!is_null($msg))
+            $this->content .= "\n<p>Raison : ". $msg . "</p>";
     }
 
     public function displayComboCreationFailure($error){

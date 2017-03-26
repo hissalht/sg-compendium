@@ -1,6 +1,6 @@
 
 CREATE TABLE Users (
-    id      INTEGER,
+    id      BIGSERIAL PRIMARY KEY,
     name    VARCHAR(100),
     login   VARCHAR(50),
     hash    VARCHAR(60),
@@ -20,8 +20,7 @@ CREATE TABLE Combos (
 );
 
 
-INSERT INTO Users VALUES (
-    1,
+INSERT INTO Users (name, login, hash, mail, status) VALUES (
     'John Jhon',
     'jjojjo',
     /*pass is abc*/
@@ -40,4 +39,15 @@ VALUES(
         '"c.LK, c.MK, s.HP","j.MP, j.HP, delay j.HK","tech forward","OTG c.HK, xx DP.HP Beat Extend","j.LK, j.MK","s.MK","j.LP, j.LK, j.MKx2, j.HP*","c.LPx2, c.MK, s.HK, xx H Take the A-Train, xx Super Sonic Jazz"',
     3,
     2500
-) RETURNING id;
+);
+
+INSERT INTO Combos (name, description, author, charac, moves, difficulty, damages)
+VALUES(
+    'Combo par un auteur différent',
+    'Intermediate mid-screen bread''n''butter combo for Big Band.<br> * The j.HP is supposed to whiff. This causes Big Band to fastfall which lets you link a light normal after. If this is too hard, any combo that includes this can be done with j.MK instead of j.MKx2 for a little less damage.',
+    4,
+    8,
+        '"c.LK, c.MK, s.HP","j.MP, j.HP, delay j.HK","tech forward","OTG c.HK, xx DP.HP Beat Extend","j.LK, j.MK","s.MK","j.LP, j.LK, j.MKx2, j.HP*","c.LPx2, c.MK, s.HK, xx H Take the A-Train, xx Super Sonic Jazz"',
+    3,
+    2500
+);

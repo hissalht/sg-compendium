@@ -49,6 +49,10 @@ class Controller{
     }
 
     public function showNewCombo(){
+        if(!$this->userConnected()){
+            $this->view->makeForbiddenPage();
+            return;
+        }
         $this->view->makeNewComboPage($this->newCombo());
     }
 
@@ -81,12 +85,26 @@ class Controller{
     }
 
     public function showModifyCombo($modifiedId){
+        if(!$this->userConnected()){
+            $this->view->makeForbiddenPage("Connectez-vous ou créez un compte afin de publier des combos");
+            return;
+        }
+        $modifiedAuthor = $this->comboStorage->getCombo($modifiedId)->getAuthor();
+        if($modifiedAuthor != $_SESSION["user"]->getId()){
+            $this->view->makeForbiddenPage("Vous n'êtes pas l'auteur de ce combo");
+            return;
+        }
         $this->view->makeNewComboPage($this->getNewEditedCombo($modifiedId), $modifiedId);
     }
 
     public function replaceCombo($comboData, $replacedId){
         if(!$this->userConnected()){
-            $this->view->makeForbiddenPage();
+            $this->view->makeForbiddenPage("Connectez-vous pour pouvoir éditer vos combos");
+            return;
+        }
+        $modifiedAuthor = $this->comboStorage->getCombo($replacedId)->getAuthor();
+        if($modifiedAuthor != $_SESSION["user"]->getId()){
+            $this->view->makeForbiddenPage("Vous n'êtes pas l'auteur de ce combo");
             return;
         }
 
