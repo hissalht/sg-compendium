@@ -30,3 +30,9 @@ table, th, tr, td {
 .field > label::after {
     content: " : ";
 }
+
+.feedback {
+    background-color: tomato;
+    color: white;
+    border: 2px solid black;
+}

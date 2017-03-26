@@ -7,8 +7,9 @@ class View {
     private $router;
     private $menu;
     private $connectionFeedback;
+    private $feedback;
 
-    public function __construct($router){
+    public function __construct($router, $feedback){
         $this->router = $router;
         $this->menu = array(
             "Home" => $this->router->getHomeURL(),
@@ -16,6 +17,7 @@ class View {
             "New" =>  $this->router->getNewComboURL(),
             "About" => $this->router->getAboutPageURL(),
         );
+        $this->feedback = $feedback;
     }
 
     public function render(){

@@ -8,7 +8,11 @@ require_once("model/UserDatabasePSQL.php");
 class Router {
     public function main(){
         session_start();
-        $view = new View($this);
+        
+        $feedback = isset($_SESSION["creation_feedback"]) ? $_SESSION["creation_feedback"] : "";
+        $_SESSION["creation_feedback"] = "";
+
+        $view = new View($this, $feedback);
         //$comboStorage = new ComboStorageFile(TMP_DIR . "combo.db");
         $comboStorage = new ComboStoragePSQL();
         $userdb = new UserDatabasePSQL();
