@@ -18,7 +18,9 @@ foreach($combos as $id => $combo){
     echo "<td><a href=\"".$this->router->getComboURL($id)."\">".$combo->getName()."</a></td>";
     echo "<td>".$combo->getAuthor()."</td>";
     echo "<td>".$combo->getDamages()."</td>";
-    echo "<td><a href=\"".$this->router->getComboEditingURL($id)."\">Edit</a></td>";
+    echo "<td><a href=\"".$this->router->getComboEditingURL($id)."\">Modifier</a> " .
+        "<a href=\"" . $this->router->getComboDeletionURL($id) . "\">Supprimer</a>" .
+        "</td>";
     echo "</tr>\n";
 }
 ?>
