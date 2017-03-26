@@ -1,3 +1,5 @@
+drop table Users;
+drop table Combos;
 
 CREATE TABLE Users (
     id      BIGSERIAL PRIMARY KEY,

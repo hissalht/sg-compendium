@@ -7,6 +7,7 @@ class ComboStoragePSQL implements ComboStorage {
     private $getAllStatement;
     private $addStatement;
     private $replaceStatement;
+    private $deleteStatement;
 
     public function __construct(){
         $user = DB_USER;
@@ -34,6 +35,9 @@ class ComboStoragePSQL implements ComboStorage {
                  damages = :damages
              WHERE id = :id"
         );
+        $this->deleteStatement = $this->db->prepare(
+            "DELETE FROM Combos WHERE id = :id"
+        );
     }
 
     public function getCombo($id){
@@ -51,15 +55,13 @@ class ComboStoragePSQL implements ComboStorage {
     public function getAllCombos(){
         $this->getAllStatement->execute(array());
         $statementResult = $this->getAllStatement->fetchAll(PDO::FETCH_ASSOC);
-        $id = 1;
 
         $result = array();
         foreach($statementResult as $line){
             $combo = new Combo($line["name"], $line["charac"],
                 $line["description"], self::array_psql_to_php($line["moves"]),
                 $line["author"], $line["difficulty"], $line["damages"]);
-            $result[$id] = $combo;
-            $id++;
+            $result[$line["id"]] = $combo;
         }
         return $result;
     }
@@ -100,6 +102,11 @@ class ComboStoragePSQL implements ComboStorage {
         //$line = $result[0];
         //return $line["id"];
         return $replacedId;
+    }
+
+    public function deleteCombo($id){
+        $data = array(":id" => $id);
+        return $this->deleteStatement->execute($data);
     }
 
 

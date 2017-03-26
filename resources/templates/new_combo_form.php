@@ -1,11 +1,3 @@
-<p class="feedback">
-<?php
-if(key_exists("creation_feedback", $_SESSION)){
-    echo $_SESSION["creation_feedback"] . "\n";
-    unset($_SESSION["creation_feedback"]);
-}
-?>
-</p>
 <form action="<?php
 if(is_null($editedId)){
     echo $this->router->getComboSubmissionURL();

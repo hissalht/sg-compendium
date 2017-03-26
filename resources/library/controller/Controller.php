@@ -129,5 +129,22 @@ class Controller{
         }else
             return $this->comboStorage->getCombo($modifiedId)->getComboBuilder();
     }
+
+    public function deleteCombo($id){
+        if(!$this->userConnected()){
+            $this->view->makeForbiddenPage("Connectez-vous pour pouvoir éditer vos combos");
+            return;
+        }
+        $modifiedAuthor = $this->comboStorage->getCombo($id)->getAuthor();
+        if($modifiedAuthor != $_SESSION["user"]->getId()){
+            $this->view->makeForbiddenPage("Vous n'êtes pas l'auteur de ce combo");
+            return;
+        }
+        if($this->comboStorage->deleteCombo($id) > 0){
+            $this->view->displayComboDeletionSuccess($id);
+        }else{
+            $this->view->displayComboDeletionFailure($id);
+        }
+    }
 }
 ?>

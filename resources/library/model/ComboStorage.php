@@ -4,5 +4,6 @@ interface ComboStorage {
     public function getAllCombos();
     public function addCombo(Combo $combo);
     public function replaceCombo(Combo $newCombo, $replacedId);
+    public function deleteCombo($id);
 }
 ?>

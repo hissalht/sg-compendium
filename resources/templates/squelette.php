@@ -19,6 +19,14 @@ foreach($this->menu as $text => $url){
 ?>
             </ul>
         </nav>
+        <p class="feedback">
+<?php
+if(key_exists("creation_feedback", $_SESSION)){
+    echo $_SESSION["creation_feedback"] . "\n";
+    unset($_SESSION["creation_feedback"]);
+}
+?>
+        </p>
         <h2><?php echo $this->title; ?></h2>
         <div id="content">
             <?php echo $this->content . "\n"; ?>

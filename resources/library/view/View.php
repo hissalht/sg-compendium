@@ -126,4 +126,14 @@ class View {
         $this->router->POSTredirect($this->router->getComboURL($id));
     }
 
+    public function displayComboDeletionSuccess($id){
+        $_SESSION["creation_feedback"] = "Combo [" . $id . "] a bien été supprimé";
+        $this->router->POSTredirect($this->router->getHomeURL());
+    }
+
+    public function displayComboDeletionFailure($id){
+        $_SESSION["creation_feedback"] = "Combo [" . $id . "] n'a pas pu être supprimé. Vérifiez qu'il est bien présent dans la liste";
+        $this->router->POSTredirect($this->router->getHomeURL());
+    }
+
 }

@@ -43,6 +43,9 @@ class Router {
         }else if(key_exists("replace", $_GET)){
             //remplace un combo existant
             $controller->replaceCombo($_POST, $_GET["replace"]);
+        }else if(key_exists("delete", $_GET)){
+            //supprime un combo existant
+            $controller->deleteCombo($_GET["delete"]);
         }else{
             $controller->showHome();
         }
@@ -88,6 +91,10 @@ class Router {
 
     public function getComboReplacementURL($replacedId){
         return "index.php?replace=" . $replacedId;
+    }
+
+    public function getComboDeletionURL($id){
+        return "index.php?delete=" . $id;
     }
 
     public function POSTredirect($url){
