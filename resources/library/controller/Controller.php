@@ -157,11 +157,14 @@ class Controller{
         $userBuilder = new UserBuilder($data);
         if(!$userBuilder->isValid()){
             $_SESSION["currentNewUser"] = $userBuilder;
-            $this->view->displayUserCreationFailure("BBB".$userBuilder->getError());
+            $this->view->displayUserCreationFailure($userBuilder->getError());
         }else{
             $user = $userBuilder->createUser();
-            $this->userdb->addUser($user, $data[UserBuilder::PASSWORD_REF]);
-            $this->view->displayUserCreationSuccess();
+            $success = $this->userdb->addUser($user, $data[UserBuilder::PASSWORD_REF]);
+            if($success)
+                $this->view->displayUserCreationSuccess();
+            else
+                $this->view->displayUserCreationFailure("Impossible to create new account, maybe this login is not available");
         }
     }
 

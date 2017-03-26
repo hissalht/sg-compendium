@@ -38,13 +38,15 @@ class View {
             include(TEMPLATES_PATH . "connection_form.php");
             $userSpace = ob_get_clean();
         }
-        $userSpace .= "<p class=\"feedback\" id=\"connection-feedback\">".$this->connectionFeedback."</p>";
+        if(!empty($this->connectionFeedback))
+            $userSpace .= "<p class=\"feedback\" id=\"connection-feedback\">".$this->connectionFeedback."</p>";
         include(TEMPLATES_PATH . "squelette.php");
     }
 
     public function makeTestPage(){
-        $this->title = "Page de test";
-        $this->content = "<p>Contenu de la page</p>";
+        $this->title = "Accueil";
+        $this->content = "<p>Bienvenue sur le combo compendium.</p>";
+        $this->content .= "<p>Ce site est une base de donnée de combos pour le jeu <a href=\"http://skullgirls.com/fr/\">SkullGirls</a> développé par Reverge Labs.</p>";
     }
 
     public function makeHomePage(){

@@ -54,6 +54,8 @@ class UserDatabasePSQL implements UserDatabase {
 
 
     public function addUser($user, $password){
+        if(!$this->loginIsAvailable($user->getLogin()))
+            return FALSE;
         $hash = password_hash($password, PASSWORD_BCRYPT);
         $data = array(
             ":name" => $user->getName(),

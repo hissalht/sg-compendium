@@ -38,7 +38,7 @@ class UserBuilder {
         $mail = $this->data[self::MAIL_REF];
 
         if(empty($login) || !ctype_alnum($login)){
-            $this->error = $login . " n'est pas un login valide. Le login ne peut pas être vide et ne doit contenir que des lettres et des chiffres";
+            $this->error = "\"".$login . "\" n'est pas un login valide. Le login ne peut pas être vide et ne doit contenir que des lettres et des chiffres";
             return FALSE;
         }
 

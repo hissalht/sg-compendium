@@ -22,9 +22,11 @@ foreach($this->menu as $text => $url){
             </ul>
         </nav>
 <?php
-echo "<p class=\"feedback\">\n";
-echo $this->feedback;
-echo "</p>\n";
+if(!empty($this->feedback)){
+    echo "<p class=\"feedback\">\n";
+    echo $this->feedback;
+    echo "</p>\n";
+}
 ?>
         <h2><?php echo $this->title; ?></h2>
         <div id="content">
