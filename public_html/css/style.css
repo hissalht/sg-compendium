@@ -1,19 +1,37 @@
 
+body {
+    background-color: #555;
+    color: #DDD;
+    font-family: 'Roboto', sans-serif;
+}
+
 table, th, tr, td {
     border: 1px solid black;
     border-collapse: collapse;
 }
 
-.bigband {
-    background-color: yellow;
+a:link, a:visited {
+    color: #DDD;
 }
 
-.beowulf {
-    background-color: grey;
-}
+/* character colors */
+.bigband { background-color: yellow; }
+.beowulf { background-color: grey; }
+.filia { background-color: darkblue; }
+.valentine { background-color: white; }
+.peacock { background-color: purple; }
+.squigly { background-color: lightblue; }
+.eliza { background-color: gold; }
+.msFortune { background-color: cyan; }
+.cerebella { background-color: orange; }
+.parasoul { background-color: black; color:red; }
+.double { background-color: brown; }
+.fukua { background-color: green; }
+.painwheel { background-color: pink; }
+.robo-fortune { background-color: steelblue; }
 
 #user-space {
-    background-color: #DDDDDD;
+    background-color: #222;
     border: 1px solid black;
     padding: 5px;
 }
@@ -23,8 +41,8 @@ table, th, tr, td {
 }
 
 .field {
-    border: 1px solid #FFFF00;
-    margin: 5px;
+    /*border: 1px solid #FFFF00;*/
+    margin: 10px;
 }
 
 .field > label::after {

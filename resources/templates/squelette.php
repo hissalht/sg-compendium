@@ -3,7 +3,9 @@
     <head>
         <meta charset="UTF-8" />
         <title><?php echo $this->title; ?></title>
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
         <link rel="stylesheet" type="text/css" href="css/style.css">
+
     </head>
     <body>
         <div id="user-space">

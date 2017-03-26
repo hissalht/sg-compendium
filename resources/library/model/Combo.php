@@ -114,7 +114,7 @@ class Combo {
     }
 
     public function getCharacterNormalizedName(){
-        return strtolower(str_replace(" ", "", self::CHARACTERS()[$this->character]));
+        return strtolower(str_replace(array(" ", "."), "", self::CHARACTERS()[$this->character]));
     }
 
     public function getComboBuilder(){
