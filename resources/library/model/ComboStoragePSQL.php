@@ -18,7 +18,7 @@ class ComboStoragePSQL implements ComboStorage {
 
         $this->getByIdStatement = $this->db->prepare(
             "SELECT * FROM combos WHERE id = :comboId");
-        $this->getAllStatement = $this->db->prepare("SELECT * FROM combos");
+        $this->getAllStatement = $this->db->prepare("SELECT * FROM combos ORDER BY id");
         $this->addStatement = $this->db->prepare(
             "INSERT INTO Combos (name, description, author, charac, moves, difficulty, damages)
             VALUES (

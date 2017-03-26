@@ -82,6 +82,10 @@ class Router {
         return "index.php?save";
     }
 
+    public function getComboEditingURL($replacedId){
+        return "index.php?edit=" . $replacedId;
+    }
+
     public function getComboReplacementURL($replacedId){
         return "index.php?replace=" . $replacedId;
     }
